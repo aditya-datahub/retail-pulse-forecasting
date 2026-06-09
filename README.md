@@ -1,1 +1,1 @@
-# retail-pulse-forecastin
+# retail-pulse-fore
