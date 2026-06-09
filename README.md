@@ -72,7 +72,8 @@ retail-pulse-forecasting/
 │   ├── 02_Time_Series_Decomposition.ipynb
 │   ├── 03_Stationarity_and_ACF_PACF.ipynb
 │   ├── 04_Forecasting_ARIMA.ipynb
-│   └── 05_Anomaly_Detection.ipynb
+│   ├── 05_Anomaly_Detection.ipynb
+│   └── 06_Data_Export.ipynb          ← Exports forecast & anomaly CSVs
 │
 ├── sql/
 │   ├── analysis.sql                  ← 6 business queries
@@ -94,14 +95,15 @@ retail-pulse-forecasting/
 | # | Notebook | What I did |
 |---|----------|------------|
 | 01 | EDA & Cleaning | Explored 9,994 rows, fixed date formats, created time features |
-| 02 | Decomposition | Split sales into Trend + Seasonality + Residual |
-| 03 | Stationarity & ACF/PACF | ADF Test (p=0.0002), identified ARIMA(p=1, d=0, q=1) |
+| 02 | Time Series Decomposition | Split sales into Trend + Seasonality + Residual (Additive & Multiplicative) |
+| 03 | Stationarity & ACF/PACF | ADF Test (p=0.0002), identified ARIMA parameters (p=1, d=0, q=1) |
 | 04 | ARIMA Forecasting | Trained model, forecasted Q1 2018, evaluated MAE/RMSE/MAPE |
 | 05 | Anomaly Detection | Flagged Nov 2017 — 20% above statistical threshold |
+| 06 | Data Export | Exported forecast.csv and anomaly.csv for Power BI dashboard |
 
 ---
 
-## 🤖 ARIMA Model
+## 🤖 ARIMA Model Summary
 
 | Parameter | Value | How I got it |
 |-----------|-------|--------------|
@@ -132,6 +134,17 @@ retail-pulse-forecasting/
 
 ---
 
+## 📱 Power BI Dashboard Features
+
+- 4 KPI Cards — Total Sales, Profit, Q1 2018 Forecast, Anomaly Count
+- Monthly Sales Trend + **Red Anomaly Threshold Line** ($98K)
+- 3-Month Sales Forecast Chart (Jan–Mar 2018)
+- Region-wise Performance Table
+- Year-over-Year Sales Growth
+- Interactive Slicers — Year & Category
+
+---
+
 ## 🛠️ Tech Stack
 
 | Tool | Purpose |
@@ -155,7 +168,10 @@ git clone https://github.com/aditya-datahub/retail-pulse-forecasting
 pip install pandas numpy matplotlib seaborn statsmodels scikit-learn
 
 # 3. Run notebooks in order
-# 01_EDA_and_Cleaning.ipynb → 02 → 03 → 04 → 05
+# 01 → 02 → 03 → 04 → 05 → 06
+
+# 4. Open dashboard
+# Open dashboard/retail_pulse.pbix in Power BI Desktop
 ```
 
 ---
